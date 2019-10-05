@@ -27,7 +27,18 @@ contract asset {
 	    require(verifiedUsers[_user]);
 	    _;
 	}
-    // Initializing the User Contract.
+
+	modifier verifiedAdmin() {
+		require(users[msg.sender] >= 2 && verifiedUsers[msg.sender]);
+		_;
+	}
+
+	modifier verifiedSuperAdmin() {
+	    require(users[msg.sender] == 3 && verifiedUsers[msg.sender]);
+	    _;
+	}
+
+	// Initializing the User Contract.
      constructor  ()  public {
 		creatorAdmin = msg.sender;
 		users[creatorAdmin] = 3;
@@ -40,8 +51,76 @@ contract asset {
 		return true;
 	}
 
-		// Get the property details.
+	// Approve the new Property.
+    	function approveProperty(uint _propId) verifiedSuperAdmin public returns (bool)  {
+		require(properties[_propId].currOwner != msg.sender);
+		properties[_propId].status = Status.Approved;
+		return true;
+	}
+
+	// Reject the new Property.
+	 function rejectProperty(uint _propId) verifiedSuperAdmin public returns (bool)  {
+		require(properties[_propId].currOwner != msg.sender);
+		properties[_propId].status = Status.Rejected;
+		return true;
+	}
+
+	// Request Change of Ownership.
+	function changeOwnership(uint _propId, address _newOwner) onlyOwner(_propId) verifiedUser(_newOwner) public returns (bool)  {
+		require(properties[_propId].currOwner != _newOwner);
+		require(propOwnerChange[_propId] == address(0));
+		propOwnerChange[_propId] = _newOwner;
+		return true;
+	}
+
+	// Approve chage in Onwership.
+	 function approveChangeOwnership(uint _propId) verifiedSuperAdmin public returns (bool)  {
+	    require(propOwnerChange[_propId] != address(0));
+	    properties[_propId].currOwner = propOwnerChange[_propId];
+	    propOwnerChange[_propId] = address(0);
+	    return true;
+	}
+
+	// Change the price of the property.
+     function changeValue(uint _propId, uint _newValue) onlyOwner(_propId) public returns (bool)  {
+        require(propOwnerChange[_propId] == address(0));
+        properties[_propId].value = _newValue;
+        return true;
+    }
+
+	// Get the property details.
 	 function getPropertyDetails(uint _propId) view public returns (Status, uint, address)  {
 		return (properties[_propId].status, properties[_propId].value, properties[_propId].currOwner);
+	}
+
+	// Add new user.
+	 function addNewUser(address _newUser) verifiedAdmin public returns (bool)  {
+	    require(users[_newUser] == 0);
+	    require(verifiedUsers[_newUser] == false);
+	    users[_newUser] = 1;
+	    return true;
+	}
+
+	// Add new Admin.
+	 function addNewAdmin(address _newAdmin) verifiedSuperAdmin public returns (bool)  {
+	    require(users[_newAdmin] == 0);
+	    require(verifiedUsers[_newAdmin] == false);
+	    users[_newAdmin] = 2;
+	    return true;
+	}
+
+	// Add new SuperAdmin.
+	 function addNewSuperAdmin(address _newSuperAdmin) verifiedSuperAdmin public returns (bool)  {
+	    require(users[_newSuperAdmin] == 0);
+	    require(verifiedUsers[_newSuperAdmin] == false);
+	    users[_newSuperAdmin] = 3;
+	    return true;
+	}
+
+	// Approve User.
+	 function approveUsers(address _newUser) verifiedSuperAdmin public returns (bool)  {
+	    require(users[_newUser] != 0);
+	    verifiedUsers[_newUser] = true;
+	    return true;
 	}
 }
