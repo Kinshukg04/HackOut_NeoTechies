@@ -36,7 +36,7 @@
                         height: auto;
                         width:100%;
                         margin: 0 auto;
-                        background-image: url("stephan-bechert-484081-unsplash.jpg");
+                        
                     }
                     .container-fluid{
                         height: auto;
@@ -175,7 +175,7 @@
 					<div class="col-md-6 text-right">
 						<ul>
 							<li><a href="index.html">Add asset</a></li>
-							<li><a href="Asset.html">View asset</a></li>
+							<li><a href="view.html">View asset</a></li>
 							<li><a href="user.html">Add user</a></li>
 						</ul>
 					</div>
@@ -184,23 +184,33 @@
 		</header>
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
-				<form id="PropAdd">	
+				<div class="form-group">
+                    <label>Choose Vehicle Type</label>
+                    <select class="custom-select" id="VehicleAddUserrole">
+                    
+                    <option value="Four-Wheeler">Four-Wheeler</option>
+                    <option value="Two-wheeler">Two-Wheeler</option>
+                    </select>
+                </div>
+            </div>
+			<div class="col-md-6 offset-md-3">
+				<form id="VehicleAdd">	
 					<div class="form-group">
-						<label>Product Id</label>
-						<input type="text" class="form-control" id="PropId" name="PropId" placeholder="Enter Property Id" required="required">
+						<label>Vehicle Number</label>
+						<input type="text" class="form-control" id="VehicleID" name="VehicleID" placeholder="Enter Vehicle Number" required="required">
 					</div>
 					<div class="form-group">
-						<label>Something</label>
-						<input type="text" class="form-control" id="PropId" name="PropId" placeholder="Enter Property Id" required="required">
+						<label>Vehicle Price</label>
+						<input type="text" class="form-control" id="VehicleID" name="VehicleID" placeholder="Enter Price of your Vehicle" required="required">
 					</div>
 					<div class="form-group">
-						<label>Something2</label>
-						<input type="text" class="form-control" id="PropId" name="PropId" placeholder="Enter Property Id" required="required">
+						<label>Owner Address</label>
+						<input type="text" class="form-control" id="VehicleID" name="VehicleID" placeholder="Enter Address of the vehicle's Owner" required="required">
 					</div>
 					<div class="form-group">
 						<center>
 							<button type="submit">
-								Create Property
+								Add Vehicle
 							</button>
 						</center>
 					</div>
