@@ -10,14 +10,14 @@ App = {
   if (typeof web3 !== 'undefined') {
     App.web3Provider = web3.currentProvider;
   } else {
-    // If no injected web3 instance is detected, fall back to Ganache
+  
     App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
   //  Web3j web3 = Web3j.build(new HttpService("https://rinkeby.infura.io/<your-token>"));
 
   }
 	web3 = new Web3(App.web3Provider);
 	web3.eth.defaultAccount = web3.eth.accounts[0];
-
+  
 
     return App.initContract();
   },
@@ -49,71 +49,6 @@ App = {
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_propId",
-				"type": "uint256"
-			}
-		],
-		"name": "getPropertyDetails",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint8"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_propId",
-				"type": "uint256"
-			}
-		],
-		"name": "rejectProperty",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_newUser",
-				"type": "address"
-			}
-		],
-		"name": "approveUsers",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
@@ -133,17 +68,22 @@ App = {
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "creatorAdmin",
-		"outputs": [
+		"constant": false,
+		"inputs": [
 			{
-				"name": "",
+				"name": "_newUser",
 				"type": "address"
 			}
 		],
+		"name": "addNewUser",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -152,13 +92,47 @@ App = {
 			{
 				"name": "_propId",
 				"type": "uint256"
-			},
+			}
+		],
+		"name": "approveChangeOwnership",
+		"outputs": [
 			{
-				"name": "_newValue",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_propId",
 				"type": "uint256"
 			}
 		],
-		"name": "changeValue",
+		"name": "approveProperty",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_newUser",
+				"type": "address"
+			}
+		],
+		"name": "approveUsers",
 		"outputs": [
 			{
 				"name": "",
@@ -200,6 +174,29 @@ App = {
 				"type": "uint256"
 			},
 			{
+				"name": "_newValue",
+				"type": "uint256"
+			}
+		],
+		"name": "changeValue",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_propId",
+				"type": "uint256"
+			},
+			{
 				"name": "_value",
 				"type": "uint256"
 			},
@@ -217,6 +214,99 @@ App = {
 		],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_propId",
+				"type": "uint256"
+			}
+		],
+		"name": "rejectProperty",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "creatorAdmin",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_propId",
+				"type": "uint256"
+			}
+		],
+		"name": "getPropertyDetails",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "properties",
+		"outputs": [
+			{
+				"name": "status",
+				"type": "uint8"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			},
+			{
+				"name": "currOwner",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -258,25 +348,6 @@ App = {
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_newUser",
-				"type": "address"
-			}
-		],
-		"name": "addNewUser",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"constant": true,
 		"inputs": [
 			{
@@ -294,81 +365,10 @@ App = {
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_propId",
-				"type": "uint256"
-			}
-		],
-		"name": "approveProperty",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_propId",
-				"type": "uint256"
-			}
-		],
-		"name": "approveChangeOwnership",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "properties",
-		"outputs": [
-			{
-				"name": "status",
-				"type": "uint8"
-			},
-			{
-				"name": "value",
-				"type": "uint256"
-			},
-			{
-				"name": "currOwner",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
 	}
 ];
 
-App.contracts.asset =  web3.eth.contract(abi).at('0xc803ad19ad9385928cab143e369202460e0e4d3b');
+App.contracts.asset =  web3.eth.contract(abi).at('0xc4e128846977d24e92919657105c102155c9c4f1');
 
     return App.bindEvents();
 
