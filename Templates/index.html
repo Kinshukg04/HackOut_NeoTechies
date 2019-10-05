@@ -3,6 +3,169 @@
 <html>
 <head>
 	<title>Asset Registry</title>
+	<style>
+                        ul {
+                            list-style-type: none;
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden;
+                            background-color: #333;
+                        }
+                    
+                    li {
+                        float: left;
+                    }
+                    
+                    li a {
+                        display: block;
+                        color: white;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration: none;
+                    }
+                    
+                    /* Change the link color to #111 (black) on hover */
+                    li a:hover {
+                        background-color: #111;
+                    }
+                    .active{
+                        background-color: dodgerblue;
+                    }
+                    
+                    .body,.html{
+                        height: auto;
+                        width:100%;
+                        margin: 0 auto;
+                        
+                    }
+                    .container-fluid{
+                        height: auto;
+                        width:100%;
+                        margin: 0 auto;
+                        background-color: black;}
+                    
+                    .form-group{
+                        align-content: center;
+                    }
+                    
+                    
+                    
+                    button{
+                        background-color: dodgerblue;
+                        ;             border-color:firebrick;
+                        border: none;
+                        color: white;
+                        padding: 16px 32px;
+                        text-decoration: none;
+                        margin: 4px 2px;
+                        cursor: pointer;
+                        border-radius: 8px;
+                    }
+                    
+                    .form-group{
+                        vertical-align: middle;
+                        background-color: black;
+                        align-self: center;
+                        margin-top: 30px;
+                        shape-margin: 20px;
+                        margin:30px;
+                        padding:20px,15px;
+                    }
+                    
+                    
+                    .row,.col-md-6 offset-md-3{
+                        margin: 50px;
+                        width: 50%;
+                        margin-left: 30%;
+                        margin-right:30%;
+                        
+                        
+                        padding: 10px;
+                        align-content: center;
+                    }
+                    label{
+                        color: white;
+                        font-family: sans-serif;
+                        font-size: 18px;
+                    }
+                    input[type=text] {
+                        width: 100%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        border-color: firebrick;
+                        box-sizing: border-box;
+                        border-radius: 8px;
+                    }
+                    
+                    .colmn {
+                        float: left;
+                        column-gap: 50px;
+                    }
+                    
+                    .row:after {
+                        content: "";
+                        display: table;
+                        clear: both;
+                    }
+                    
+                    .custom-select {
+                        position: relative;
+                        font-family: Arial;
+                    }
+                    
+                    .custom-select select {
+                        display: none;
+                    }
+                    
+                    .select-selected {
+                        background-color: DodgerBlue;
+                    }
+                    
+                    .select-selected:after {
+                        position: absolute;
+                        content: "";
+                        top: 14px;
+                        right: 10px;
+                        width: 0;
+                        height: 0;
+                        border: 6px solid transparent;
+                        border-color: #fff transparent transparent transparent;
+                    }
+                    
+                    
+                    .select-selected.select-arrow-active:after {
+                        border-color: transparent transparent #fff transparent;
+                        top: 7px;
+                    }
+                    
+                    
+                    .select-items div,.select-selected {
+                        color: #ffffff;
+                        padding: 8px 16px;
+                        border: 1px solid transparent;
+                        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+                        cursor: pointer;
+                    }
+                    
+                    .select-items {
+                        position: absolute;
+                        background-color: DodgerBlue;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        z-index: 99;
+                    }
+                    
+                    .select-hide {
+                        display: none;
+                    }
+                    
+                    .select-items div:hover, .same-as-selected {
+                        background-color: rgba(0, 0, 0, 0.1);
+                    }
+                    
+                    
+                        </style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -11,8 +174,8 @@
 				<center>
 					<div class="col-md-6 text-right">
 						<ul>
-							<li><a href="index.html">Add property</a></li>
-							<li><a href="property.html">View Property</a></li>
+							<li><a href="index.html">Add asset</a></li>
+							<li><a href="view.html">View asset</a></li>
 							<li><a href="user.html">Add user</a></li>
 						</ul>
 					</div>
@@ -21,23 +184,33 @@
 		</header>
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
-				<form id="PropAdd">	
+				<div class="form-group">
+                    <label>Choose Vehicle Type</label>
+                    <select class="custom-select" id="VehicleAddUserrole">
+                    
+                    <option value="Four-Wheeler">Four-Wheeler</option>
+                    <option value="Two-wheeler">Two-Wheeler</option>
+                    </select>
+                </div>
+            </div>
+			<div class="col-md-6 offset-md-3">
+				<form id="VehicleAdd">	
 					<div class="form-group">
-						<label>Property Id</label>
-						<input type="text" class="form-control" id="PropId" name="PropId" placeholder="Enter Property Id" required="required">
+						<label>Vehicle Number</label>
+						<input type="text" class="form-control" id="VehicleID" name="VehicleID" placeholder="Enter Vehicle Number" required="required">
 					</div>
 					<div class="form-group">
-						<label>Something</label>
-						<input type="text" class="form-control" id="PropId" name="PropId" placeholder="Enter Property Id" required="required">
+						<label>Vehicle Price</label>
+						<input type="text" class="form-control" id="VehicleID" name="VehicleID" placeholder="Enter Price of your Vehicle" required="required">
 					</div>
 					<div class="form-group">
-						<label>Something2</label>
-						<input type="text" class="form-control" id="PropId" name="PropId" placeholder="Enter Property Id" required="required">
+						<label>Owner Address</label>
+						<input type="text" class="form-control" id="VehicleID" name="VehicleID" placeholder="Enter Address of the vehicle's Owner" required="required">
 					</div>
 					<div class="form-group">
 						<center>
 							<button type="submit">
-								Create Property
+								Add Vehicle
 							</button>
 						</center>
 					</div>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		View Vehicle
+	</title>
+	 <style>
+                        ul {
+                            list-style-type: none;
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden;
+                            background-color: #333;
+                        }
+                    
+                    li {
+                        float: left;
+                    }
+                    
+                    li a {
+                        display: block;
+                        color: white;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration: none;
+                    }
+                    
+                    /* Change the link color to #111 (black) on hover */
+                    li a:hover {
+                        background-color: #111;
+                    }
+                    .active{
+                        background-color: dodgerblue;
+                        ;
+                    }
+                    
+                    .body,.html{
+                        height: auto;
+                        width:100%;
+                        background-color: black;
+                        margin: 0 auto;
+                        
+                    }
+                    .container-fluid{
+                        height: auto;
+                        width:100%;
+                        background-color: black;
+                        margin: 0 auto;}
+                    
+                    .form-group{
+                        align-content: center;
+                    }
+                    
+                    label{
+                        color: white;
+                        font-family: sans-serif;
+                        font-size: 18px;
+                    }
+                    
+                    button{
+                        background-color: dodgerblue;
+                        border: none;
+                        color: white;
+                        padding: 16px 32px;
+                        text-decoration: none;
+                        margin: 4px 2px;
+                        cursor: pointer;
+                        border-radius: 8px;
+                    }
+                    
+                    .form-group{
+                        vertical-align: middle;
+                        background-color: black;
+                        align-self: center;
+                        margin-top: 30px;
+                        shape-margin: 20px;
+                        margin:30px;
+                        padding:20px,15px;
+                    }
+                    
+                    
+                    .row,.col-md-6 offset-md-3{
+                        margin: 50px;
+                        width: 50%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        
+                        
+                        padding: 10px;
+                        align-content: center;
+                    }
+                    
+                    input[type=text] {
+                        width: 100%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        border-color: firebrick;
+                        background-color: white;
+                        box-sizing: border-box;
+                        border-radius: 8px;
+                    }
+                    
+                    
+                    #table-property {
+                        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                        border-collapse: collapse;
+                        color: white;
+                        margin-top: 30px;
+                        border-color: firebrick;
+                        width: 100%;
+                    }
+                    
+                    #table-property td, #table-property th {
+                        border: 1px solid #ddd;
+                        border-color: firebrick;
+                        padding: 8px;
+                    }
+                    
+                    #table-property tr:nth-child(even){background-color: #f2f2f2; border-color: firebrick;}
+                    
+                    #table-property tr:hover {background-color: #f2f2f2; border-color: firebrick;}
+                    
+                    #table-property th {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        text-align: left;
+                        border-color: firebrick;
+                        background-color:  black;
+                        color: white;
+                    }
+                    
+                        </style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col=md-6 offset-md-3">
+				<div class="col-md-6">
+					<form id="PropSearchForm">
+						<div class="form-group">
+							<label>Get Vehicle Details</label>
+							<input type="text" class="form-group" id="PropSearchForm" name="PropSearch" placeholder="Enter Vehicle No" required="required">
+						</div>
+					</form>
+					<center>
+						<button type="submit">Search Vehicle</button>
+					</center>
+
+				</div>
+
+				<table id="table-property">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Vehicle Id</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Value</th>
+                                <th scope="col">Current Owner</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td id="resultPropID"></td>
+                                <td id="resultPropStatus"></td>
+                                <td id="resultPropValue"></td>
+                                <td id="resultPropOwner"></td>
+                                
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <div>
+                     
+                      
+                    </div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
+   
+</body>
+</html>
