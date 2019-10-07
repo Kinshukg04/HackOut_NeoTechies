@@ -16,7 +16,7 @@ App = {
 
   }
 	web3 = new Web3(App.web3Provider);
-	web3.eth.defaultAccount = web3.eth.accounts[0];
+	web3.eth.defaultAccount = web3.eth.accounts[1];
   
 
     return App.initContract();
@@ -368,7 +368,7 @@ App = {
 	}
 ];
 
-App.contracts.asset =  web3.eth.contract(abi).at('0xc4e128846977d24e92919657105c102155c9c4f1');
+App.contracts.asset =  web3.eth.contract(abi).at('0x9d40dfc4883954b76ecdce709e82f8634eefbe12');
 
     return App.bindEvents();
 
